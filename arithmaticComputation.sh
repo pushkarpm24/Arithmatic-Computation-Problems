@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-#Problem Statement ->  descending sort..
+#Problem Statement ->  ascending sort..
 #Author -> Pushkar Morey
 #Date -> 20/03/2020
 
@@ -54,4 +54,25 @@ function descendingSort()
 	echo Array In Descending Order..${arrayValues[@]}
 }
 
+
+function ascendingSort()
+{
+   temp=0
+   for ((index=0; index<${#arrayValues[@]}; index++ ))
+   do
+      for ((counter=index+1; counter<${#arrayValues[@]}; counter++ ))
+      do
+         if [[ ${arrayValues[index]} -gt ${arrayValues[counter]} ]]
+         then
+            temp=${arrayValues[index]}
+            arrayValues[index]=${arrayValues[counter]}
+            arrayValues[counter]=$temp
+         fi
+      done
+   done
+   echo Array In ascending Order..${arrayValues[@]}
+}
+
+
 descendingSort
+ascendingSort
