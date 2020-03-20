@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-#Problem Statement ->  Compute a%b+c
+#Problem Statement ->  descending sort..
 #Author -> Pushkar Morey
 #Date -> 20/03/2020
 
@@ -35,7 +35,23 @@ for (( i=1; i<=${#resultStore[@]}; i++ ))
 
 		done
 
-echo "keys of Dictionary :"${!resultStore[@]}
-echo "values of Dictionry :"${resultStore[@]}
-echo "***************************"
-echo "Array values :"${arrayValues[@]}
+
+function descendingSort()
+{
+	temp=0
+	for ((index=0; index<${#arrayValues[@]}; index++ ))
+	do
+		for ((counter=index+1; counter<${#arrayValues[@]}; counter++ ))
+		do
+			if [[ ${arrayValues[index]} -lt ${arrayValues[counter]} ]]
+			then
+				temp=${arrayValues[index]}
+				arrayValues[index]=${arrayValues[counter]}
+				arrayValues[counter]=$temp
+			fi
+		done
+	done
+	echo Array In Descending Order..${arrayValues[@]}
+}
+
+descendingSort
