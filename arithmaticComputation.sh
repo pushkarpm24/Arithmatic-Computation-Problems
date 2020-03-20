@@ -5,7 +5,9 @@
 #Date -> 20/03/2020
 
 declare -A resultStore
-resultStore=([result1]=0 [result2]=0 [result3]=0 [result4]=0)
+resultStore=([1]=0 [2]=0 [3]=0 [4]=0)
+
+declare -a arrayValues
 
 read -p "Enter first number to perform opertion :" numberOne
 read -p "Enter second number to perform operation :" numberTwo
@@ -13,19 +15,27 @@ read -p "Enter third number to perform operation :" numberThree
 
 #FIRST OPERATION AS GIVEN
 resultOne=$(( $numberOne + $numberTwo * $numberThree ))
-resultStore[result1]=$resultOne
+resultStore[1]=$resultOne
 
 #SECOND OPERATION AS GIVEN
 resultTwo=$(( $numberOne * $numberTwo + $numberThree ))
-resultStore[result2]=$resultTwo
+resultStore[2]=$resultTwo
 
 #THIRD OPERATION AS GIVEN
 resultThree=$(( $numberThree + $numberOne / $numberTwo ))
-resultStore[result3]=$resultThree
+resultStore[3]=$resultThree
 
 #FOURTH OPERATION AS GIVEN
 resultFour=$(( $numberOne % $numberTwo + $numberThree ))
-resultStore[result4]=$resultFour
+resultStore[4]=$resultFour
 
-echo ${!resultStore[@]}
-echo ${resultStore[@]}
+for (( i=1; i<=${#resultStore[@]}; i++ ))
+		do
+				arrayValues[i]=${resultStore[$i]}
+
+		done
+
+echo "keys of Dictionary :"${!resultStore[@]}
+echo "values of Dictionry :"${resultStore[@]}
+echo "***************************"
+echo "Array values :"${arrayValues[@]}
